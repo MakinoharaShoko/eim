@@ -61,4 +61,20 @@ app.post(
     }
 )
 
+app.post(
+    '/sendMes/*',(req,res) =>{
+        console.log(req.body);
+        MongoClient.connect(MongoUrl, function(err, db) {
+            if (err) throw err;
+            let dbo =db.db('EIM');
+            let obj = req.body;
+            dbo.collection("messages").insertOne(obj,function (err,result){
+                if (err) throw err;
+                db.close();
+                res.send('OK:\n'+obj.sender+': '+obj.message+'\n to '+obj.receiver);
+            });
+        });
+    }
+)
+
 app.listen(Port, () => console.log('服务器已就绪，运行在端口'+Port))//输出服务器启动信息
