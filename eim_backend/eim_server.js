@@ -4,10 +4,12 @@ const express = require('express');
 const { fstat } = require('fs');
 const app = express();
 const bodyParser = require('body-parser')
+const cors = require('cors');
 var MongoClient = require('mongodb').MongoClient;
 process.env.PORT = Port;
 
-app.use(express.static('public'))//allow browser access resources
+app.use(express.static('public'));//allow browser access resources
+app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
