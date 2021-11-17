@@ -21,7 +21,18 @@ const MongoUrl = "mongodb://localhost:27017/";
 
 //获取主信息的方法
 app.get('/getAllInfo/*', (req, res) => {
-
+    let eid = req.url.split('/');
+    eid = eid[eid.length-1];
+    eid = parseInt(eid);
+    MongoClient.connect(MongoUrl,function (err,db) {
+        if(err) throw err;
+        let dbo = db.db('userInfo');
+        dbo.collection('users').find({eid:eid}).toArray(function (err,result) {
+            if(err) throw err;
+            res.send(result);
+            db.close();
+        })
+    })
 });
 
 app.post(
