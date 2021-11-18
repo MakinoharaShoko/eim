@@ -61,6 +61,25 @@ app.post(
     }
 )
 
+app.post(
+    '/login/*',(req,res)=>{
+        let userEID = parseInt(req.body['userID']);
+        let pwd = req.body['pwd'];
+        MongoClient.connect(MongoUrl,(err,db)=>{
+            if(err) throw err;
+            let dbo = db.db('EIM');
+            dbo.collection('users').find({eid:userEID,pwd:pwd}).toArray((err,result)=>{
+                if(result.length!==0){
+                    res.send('OK');
+                }else{
+                    res.send('error');
+                }
+                db.close();
+            })
+        })
+    }
+)
+
 //处理用户发送信息的请求
 app.post(
     '/sendMes/*',(req,res) =>{
