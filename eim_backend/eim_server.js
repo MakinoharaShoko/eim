@@ -62,7 +62,7 @@ app.post(
 )
 
 app.post(
-    '/login/*',(req,res)=>{
+    '/components/*',(req,res)=>{
         let userEID = parseInt(req.body['userID']);
         let pwd = req.body['pwd'];
         MongoClient.connect(MongoUrl,(err,db)=>{
