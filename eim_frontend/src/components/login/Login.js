@@ -1,4 +1,10 @@
 import './Login.css'
+import {Dialog} from "../main/pages/dialog/Dialog";
+import {Contacts} from "../main/pages/contacts/Contacts";
+import {My} from "../main/pages/my/My";
+import {Nav} from "../main/nav/Nav";
+import ReactDOM from "react-dom";
+import {refContent} from "../../controller/core";
 
 function Login(props){
     return <div id={"eim_login"}>
@@ -21,6 +27,19 @@ function Login(props){
 function hideLoginPage(){
     document.getElementById("eim_login").style.display='none';
     document.getElementById("Main").style.display = 'block';
+    document.cookie='10001';
+    setInterval(ref,1000);
+    function ref(){
+        refContent();
+        let page = [
+        <Dialog/>,
+        <Contacts/>,
+        <My/>,
+        <Nav/>
+        ]
+        console.log('rendering')
+        ReactDOM.render(<div>{page}</div>,document.getElementById('Main'))
+    }
 }
 
 export {Login}

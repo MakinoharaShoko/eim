@@ -6,10 +6,6 @@ import {My} from "./pages/my/My";
 
 function Main(props){
     return <div id={"Main"}>
-        <Dialog/>
-        <Contacts/>
-        <My/>
-        <Nav/>
     </div>
 }
 
