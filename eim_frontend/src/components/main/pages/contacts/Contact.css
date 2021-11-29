@@ -1,3 +1,20 @@
 #contacts{
     display: none;
 }
+.addFriendButton{
+    color: #005CAF;
+    background-color: rgba(125,185,222,0.3);
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin: 5px 10px 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.2);
+    font-size: larger;
+}
+
+.singleContact{
+    text-align: center;
+    margin:5px 10px 5px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 10px 0 10px 0;
+}

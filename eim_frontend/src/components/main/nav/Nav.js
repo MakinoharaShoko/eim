@@ -1,4 +1,5 @@
 import "./Nav.css"
+import {runtime} from "../../../controller/core";
 
 function Nav(){
     return <div id={"nav"}>
@@ -19,5 +20,6 @@ function switchTab(tab){
     document.getElementById('contacts').style.display = 'none';
     document.getElementById('my').style.display = 'none';
     document.getElementById(tab).style.display = 'block';
+    runtime.currentPage=tab;
 }
 export {Nav};

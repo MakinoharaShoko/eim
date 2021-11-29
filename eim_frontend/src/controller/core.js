@@ -1,8 +1,23 @@
 let runtime = {
-    host:'localhost:3001'
+    host:'localhost:3001',
+    currentPage:'dialog',
+    RuntimeData:{
+        userInfo:[
+            {
+                name:'eim-影',
+                eid:9999,
+                detail:'一个简单的网页即时通讯（很不安全）'
+            }
+        ]
+    },
+    messageList:{},
+    userEID:-1,
+    EidToMark:{}
 }
 
+class Control{
 
+}
 
 
 function refContent(){
@@ -24,6 +39,10 @@ function refContent(){
             let AllData = JSON.parse(getUserMain.responseText);
             // let AllData = getUserMain.responseText;
             console.log(AllData);
+            runtime.RuntimeData = AllData;
+            for (let i = 0; i < AllData.friends.length; i++) {
+                runtime.EidToMark[AllData.friends[i].receiver.toString()] = AllData.friends[i].message;
+            }
         }
     };
 
