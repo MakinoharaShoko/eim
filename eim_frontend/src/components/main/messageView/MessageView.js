@@ -1,5 +1,6 @@
 import './messageView.css'
 import {runtime} from "../../../controller/core";
+import {Return} from "@icon-park/react";
 
 const MessageView = (props)=>{
     console.log("MV showing" + props.uid)
@@ -22,7 +23,9 @@ const MessageView = (props)=>{
 
     return <div id={"MV"}>
         <div className={"dialogTop"}>
-            <div className={"closeMV"} onClick={closeMV}>关闭</div>
+            <div className={"closeMV"} onClick={closeMV}>
+                <Return theme="outline" size="24" fill="#333"/>
+            </div>
             <div className={"MessageObjectName"}>{runtime.EidToMark[props.uid]}</div>
         </div>
         <div className={"messageContainer"}>

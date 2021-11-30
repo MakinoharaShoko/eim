@@ -1,21 +1,27 @@
 import './friendReq.css'
 import {runtime} from "../../../../../controller/core";
+import {Return} from "@icon-park/react";
 
 const FriendReq = () =>{
     let friendReqList=[];
     if(runtime.RuntimeData.hasOwnProperty('AddFriendReq')){
         for (let i = 0; i < runtime.RuntimeData.AddFriendReq.length; i++) {
-            let temp =<div>
-                <div>
-                    {runtime.RuntimeData.AddFriendReq[i].sender}
+            getUserNameByEid(runtime.RuntimeData.AddFriendReq[i].sender.toString());
+            let tempName = runtime.RuntimeData.AddFriendReq[i].sender;
+            if(runtime.eidToName.hasOwnProperty(tempName)){
+                tempName = runtime.eidToName[runtime.RuntimeData.AddFriendReq[i].sender];
+            }
+            let temp =<div className={"singleAddReqElement"}>
+                <div className={"senderName"}>
+                    {tempName}
                 </div>
-                <div>
+                <div className={"senderText"}>
                     {runtime.RuntimeData.AddFriendReq[i].message}
                 </div>
                 <div>
-                    设置备注名：<input id={"addDetail"+runtime.RuntimeData.AddFriendReq[i].sender}/>
+                    填写备注：<input id={"addDetail"+runtime.RuntimeData.AddFriendReq[i].sender} className={"beizhu"}/>
                 </div>
-                <div onClick={()=>{okAddFriend(runtime.RuntimeData.AddFriendReq[i].sender)}}>同意</div>
+                <div onClick={()=>{okAddFriend(runtime.RuntimeData.AddFriendReq[i].sender)}} className={"okButton"}>同意</div>
             </div>
             friendReqList.push(temp)
         }
@@ -24,7 +30,7 @@ const FriendReq = () =>{
         <div onClick={()=>{
             document.getElementById("friendReq").style.display = 'none'
         }
-        }>关闭</div>
+        }><Return theme="outline" size="24" fill="#333"/></div>
         {friendReqList}
     </div>
 }
@@ -50,6 +56,24 @@ function okAddFriend(eid){
     updReq2.onreadystatechange = ()=>{
     }
     document.getElementById("friendReq").style.display = 'none'
+}
+
+function getUserNameByEid(eid){
+    let req1 = new XMLHttpRequest()
+    req1.open('GET',runtime.host+`/getAllInfo/${eid}`);
+    req1.send();
+    req1.onreadystatechange = ()=>{
+        if(req1.readyState === 4 && req1.status === 200){
+            let s = req1.responseText;
+            console.log(req1.responseText)
+            let data = JSON.parse(s);
+            if(data[0].hasOwnProperty('name')){
+                runtime.eidToName[eid] = data[0].name;
+            }
+        }
+
+
+    }
 }
 
 export default FriendReq

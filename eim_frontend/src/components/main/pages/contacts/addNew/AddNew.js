@@ -2,9 +2,13 @@ import './addnew.css'
 import {Button, Input} from 'antd';
 import 'antd/dist/antd.css';
 import {runtime} from "../../../../../controller/core";
+import {Return} from "@icon-park/react";
 
 const AddNew = () => {
     return <div id={"addNew"}>
+        <div onClick={()=>{document.getElementById('addNew').style.display = 'none'}}>
+            <Return theme="outline" size="24" fill="#333"/>
+        </div>
         <Input placeholder="对方EID" id={"oUID"}/>
         <Input placeholder="验证消息" id={"oMessage"}/>
         <Button type="primary" onClick={sendAddReq}>发送请求</Button>

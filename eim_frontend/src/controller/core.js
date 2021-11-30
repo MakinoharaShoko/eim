@@ -13,7 +13,8 @@ let runtime = {
     messageList:{},
     userEID:-1,
     EidToMark:{},
-    currentMessageObject:'-1'
+    currentMessageObject:'-1',
+    eidToName:{},
 }
 
 class Control{
