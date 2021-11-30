@@ -62,7 +62,7 @@ app.post(
 )
 
 app.post(
-    '/components/*',(req,res)=>{
+    '/login/',(req,res)=>{
         let userEID = parseInt(req.body['userID']);
         let pwd = req.body['pwd'];
         MongoClient.connect(MongoUrl,(err,db)=>{
@@ -72,7 +72,7 @@ app.post(
                 if(result.length!==0){
                     res.send('OK');
                 }else{
-                    res.send('error');
+                    res.send('error'+' data is'+`id:${userEID},pwd:${pwd}`);
                 }
                 db.close();
             })

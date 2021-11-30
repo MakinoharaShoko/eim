@@ -1,5 +1,5 @@
 let runtime = {
-    host:'localhost:3001',
+    host:'http://localhost:3001',
     currentPage:'dialog',
     RuntimeData:{
         userInfo:[
@@ -16,7 +16,7 @@ let runtime = {
 }
 
 class Control{
-
+    description='unset';
 }
 
 
@@ -24,7 +24,7 @@ function refContent(){
     let userEID = document.cookie;
     let getUserMain = new XMLHttpRequest();
     // 设置属性
-    getUserMain.open('get', 'http://'+runtime.host+'/getMainInfo/'+userEID);
+    getUserMain.open('get', runtime.host+'/getMainInfo/'+userEID);
 
     // 如果想要使用post提交数据,必须添加此行
     // getUserMain.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -48,4 +48,4 @@ function refContent(){
 
 }
 
-export {refContent,runtime};
+export {refContent,runtime,Control}

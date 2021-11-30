@@ -2,6 +2,7 @@ div#eim_login{
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 div#title{

@@ -19,17 +19,36 @@ function Login(props){
             <div className={"loginButton"} onClick={hideLoginPage}>
                 登录
             </div>
-            <div className={"regButton"}>注册</div>
+            <div className={"regButton"} onClick={showRegister}>注册</div>
         </div>
     </div>
 }
 
+function showRegister(){
+    document.getElementById("register").style.display = 'block';
+}
+
 function hideLoginPage(){
-    document.getElementById("eim_login").style.display='none';
-    document.getElementById("Main").style.display = 'block';
-    document.cookie='10001';
-    runtime.userEID=10001;
-    setInterval(ref,1500);
+    let loginReq = new XMLHttpRequest();
+    loginReq.open('POST',runtime.host+'/login/')
+    loginReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    let eid = document.getElementById('eidInput').value
+    let pwd = document.getElementById("pwdInput").value
+    let sendLoginData=`userID=${eid}&pwd=${pwd}`
+    loginReq.send(sendLoginData);
+    loginReq.onreadystatechange = ()=>{
+        if(loginReq.readyState === 4 &&loginReq.status === 200){
+            if(loginReq.responseText === 'OK'){
+                document.getElementById("eim_login").style.display='none';
+                document.getElementById("Main").style.display = 'block';
+                document.cookie=eid
+                runtime.userEID=parseInt(eid);
+                setInterval(ref,1500);
+            }else {
+                alert("登陆失败（暂时还没做界面）")
+            }
+        }
+    }
     function ref(){
         refContent();
         let page = [
