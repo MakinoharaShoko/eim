@@ -44,8 +44,6 @@ div#title{
 }
 
 .regButton{
-    position: absolute;
-    bottom: 0;
     padding: 0 0 10% 0;
     text-align: center;
     width: 100%;

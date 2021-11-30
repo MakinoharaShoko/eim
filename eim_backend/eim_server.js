@@ -8,7 +8,7 @@ const cors = require('cors');
 var MongoClient = require('mongodb').MongoClient;
 process.env.PORT = Port;
 
-app.use(express.static('public'));//allow browser access resources
+app.use('/',express.static(__dirname + '/public'));//allow browser access resources
 app.use(cors());//允许跨域访问
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))

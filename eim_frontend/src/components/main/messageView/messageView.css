@@ -10,7 +10,8 @@
 .messageContainer{
     display: flex;
     flex-flow: column-reverse;
-    height: 95vh;
+    height: 90vh;
+    padding: 0 0 10vh 0;
 }
 
 .closeMV{
@@ -27,8 +28,11 @@
 }
 
 .dialogTop{
+    position: fixed;
+    top: 0;
     background-color: aliceblue;
     height: 5vh;
+    width: 100%;
 }
 
 .singleMessageWrapper{
@@ -74,4 +78,10 @@
     text-align: center;
     line-height: 40px;
     font-size: large;
+}
+
+.sendMessageMain{
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
 }

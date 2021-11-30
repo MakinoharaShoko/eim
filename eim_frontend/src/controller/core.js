@@ -1,5 +1,5 @@
 let runtime = {
-    host:'http://localhost:3001',
+    host:'http://192.168.31.246:3001',
     currentPage:'dialog',
     RuntimeData:{
         userInfo:[

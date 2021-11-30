@@ -37,7 +37,7 @@ function Dialog(){
         if(runtime.EidToMark[p]){
             showNameString = runtime.EidToMark[p];
         }
-        let temp = <div className={"singleDialog"}>
+        let temp = <div className={"singleDialog"} onClick={()=>{openMessageView(p)}}>
             <div className={"dialogObject"}>
                 {showNameString}
             </div>
@@ -50,6 +50,12 @@ function Dialog(){
     return <div id={"dialog"}>
         {toDialogView}
     </div>
+}
+
+function openMessageView(eid){
+    runtime.currentMessageObject = eid;
+    console.log("now showing message from"+eid)
+    document.getElementById("MV").style.display = 'block'
 }
 
 export {Dialog};
