@@ -1,7 +1,77 @@
 #MV{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 3;
     display: none;
+    background-color: white;
+}
+
+.messageContainer{
+    display: flex;
+    flex-flow: column-reverse;
+    height: 95vh;
+}
+
+.closeMV{
+    position: absolute;
+}
+
+.MessageObjectName{
+    text-align: center;
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+    color: #005CAF;
+    font-size: large;
+}
+
+.dialogTop{
+    background-color: aliceblue;
+    height: 5vh;
+}
+
+.singleMessageWrapper{
+}
+
+.rightMessage{
+    float: right;
+    text-align: right;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    background-color: #005CAF;
+    border-radius: 10px 10px 0 10px;
+    margin: 5px 5px 5px 5px;
+}
+
+.leftMessage{
+    float: left;
+    padding: 10px 10px 10px 10px;
+    color: #005CAF;
+    background-color: aliceblue;
+    border-radius: 10px 10px 10px 0;
+    margin: 5px 5px 5px 5px;
+}
+
+#messageSendInput{
+    float: left;
+    width: 83%;
+    background-color: rgba(0,0,0,0.05);
+    color: black;
+    border-radius: 5px;
+    border: 1px solid #005CAF;
+    height: 40px;
+    line-height: 40px;
+}
+
+.sendButton{
+    float: right;
+    width: 17%;
+    height: 40px;
+    background-color: #005CAF;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    font-size: large;
 }

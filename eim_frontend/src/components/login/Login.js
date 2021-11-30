@@ -44,7 +44,7 @@ function hideLoginPage(){
                 document.getElementById("Main").style.display = 'block';
                 document.cookie=eid
                 runtime.userEID=parseInt(eid);
-                setInterval(ref,1500);
+                setInterval(ref,100);
             }else {
                 alert("登陆失败（暂时还没做界面）")
             }

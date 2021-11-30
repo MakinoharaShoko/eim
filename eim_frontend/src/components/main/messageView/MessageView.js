@@ -2,9 +2,7 @@ import './messageView.css'
 import {runtime} from "../../../controller/core";
 
 const MessageView = (props)=>{
-    if(props.uid ==='-1'){
-        return <div id={"MV"}> </div>
-    }
+    console.log("MV showing" + props.uid)
     let dialogObject=props.uid;
     let messageViewShow=[];
     if(runtime.messageList.hasOwnProperty(dialogObject)){
@@ -17,13 +15,42 @@ const MessageView = (props)=>{
             }else{
                 temp = <div className={"leftMessage"}>{message}</div>
             }
-            messageViewShow.push(temp)
+            let temp2 = <div className={"singleMessageWrapper"}>{temp}</div>
+            messageViewShow.push(temp2)
         }
     }
 
     return <div id={"MV"}>
-        {messageViewShow}
+        <div className={"dialogTop"}>
+            <div className={"closeMV"} onClick={closeMV}>关闭</div>
+            <div className={"MessageObjectName"}>{runtime.EidToMark[props.uid]}</div>
+        </div>
+        <div className={"messageContainer"}>
+            <div className={"sendMessageMain"}>
+                <input id={"messageSendInput"}/>
+                <span className={"sendButton"} onClick={messageSend}>发送</span>
+            </div>
+            {messageViewShow}
+        </div>
     </div>
+}
+
+function closeMV(){
+    document.getElementById("MV").style.display = 'none';
+}
+
+function messageSend(){
+    let msReq = new XMLHttpRequest();
+    msReq.open('POST',runtime.host+'/sendMes/')
+    msReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    let sender = runtime.userEID
+    let message = document.getElementById("messageSendInput").value
+    document.getElementById("messageSendInput").value = '';
+    let receiver= runtime.currentMessageObject;
+    let sendLoginData=`sender=${sender}&message=${message}&receiver=${receiver}`
+    msReq.send(sendLoginData);
+    msReq.onreadystatechange = ()=>{
+    }
 }
 
 export default MessageView

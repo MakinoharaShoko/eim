@@ -2,8 +2,6 @@ import "./Contact.css";
 import {runtime} from "../../../../controller/core";
 import AddNew from "./addNew/AddNew";
 import FriendReq from "./FriendReq/FriendReq";
-import MessageView from "../../messageView/MessageView";
-import ReactDOM from "react-dom";
 
 function Contacts() {
     let ContactList=[];
@@ -33,6 +31,7 @@ function openReq(){
 
 function openMessageView(eid){
     runtime.currentMessageObject = eid;
+    console.log("now showing message from"+eid)
     document.getElementById("MV").style.display = 'block'
 }
 

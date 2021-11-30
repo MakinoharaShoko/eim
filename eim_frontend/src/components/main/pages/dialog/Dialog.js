@@ -9,7 +9,7 @@ function Dialog(){
     console.log(runtime.userEID)
     if(AllDialog){
         runtime.messageList = {};
-        for (let i = 0; i < AllDialog.length; i++) {
+        for (let i = AllDialog.length-1; i >= 0; i--) {
             if(AllDialog[i].sender === runtime.userEID){
                 //发送者是用户
                 let DialogIndex = AllDialog[i].receiver.toString();
