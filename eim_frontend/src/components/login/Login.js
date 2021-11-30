@@ -5,6 +5,7 @@ import {My} from "../main/pages/my/My";
 import {Nav} from "../main/nav/Nav";
 import ReactDOM from "react-dom";
 import {refContent, runtime} from "../../controller/core";
+import MessageView from "../main/messageView/MessageView";
 
 function Login(props){
     return <div id={"eim_login"}>
@@ -52,10 +53,11 @@ function hideLoginPage(){
     function ref(){
         refContent();
         let page = [
-        <Dialog/>,
-        <Contacts/>,
-        <My/>,
-        <Nav/>
+            <MessageView uid={runtime.currentMessageObject}/>,
+            <Dialog/>,
+            <Contacts/>,
+            <My/>,
+            <Nav/>
         ]
         console.log('rendering')
         ReactDOM.render(<div>{page}</div>,document.getElementById('Main'))
