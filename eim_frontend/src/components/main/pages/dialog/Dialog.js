@@ -33,9 +33,13 @@ function Dialog(){
     //开始处理会话渲染
     let toDialogView=[];
     for(let p in runtime.messageList){
+        let showNameString = p;
+        if(runtime.EidToMark[p]){
+            showNameString = runtime.EidToMark[p];
+        }
         let temp = <div className={"singleDialog"}>
             <div className={"dialogObject"}>
-                {runtime.EidToMark[p]}
+                {showNameString}
             </div>
             <div className={"dialogContent"}>
                 {runtime.messageList[p][runtime.messageList[p].length-1].message}
