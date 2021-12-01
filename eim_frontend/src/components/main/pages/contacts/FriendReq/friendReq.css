@@ -5,6 +5,7 @@
     z-index: 3;
     display: none;
     background-color: white;
+    overflow: scroll;
 }
 
 .singleAddReqElement{

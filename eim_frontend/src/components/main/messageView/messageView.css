@@ -12,6 +12,7 @@
     flex-flow: column-reverse;
     height: 90vh;
     padding: 0 0 10vh 0;
+    overflow: scroll;
 }
 
 .closeMV{
