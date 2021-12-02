@@ -71,8 +71,6 @@ function getUserNameByEid(eid){
                 runtime.eidToName[eid] = data[0].name;
             }
         }
-
-
     }
 }
 

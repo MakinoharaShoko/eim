@@ -1,0 +1,132 @@
+#showDetail{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    z-index: 8;
+}
+
+.topBar{
+    width: 100%;
+    height: 7vh;
+    background-color: aliceblue;
+}
+
+.detailTitle{
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    width: 100%;
+    line-height: 7vh;
+    color: #005caf;
+    font-size: x-large;
+}
+
+.detailBackButton{
+    position: absolute;
+    padding: 1.5vh 0 0 1.5vh;
+    z-index: 10;
+}
+
+.mainDetail{
+    width: 98%;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 5px 10px 5px 10px;
+    margin: 5px 1% 5px 1%;
+}
+
+.mainMark{
+    font-size: xx-large;
+    color: #005caf;
+}
+.mainEid{
+    padding: 0 0 0 5px;
+    font-size: larger;
+    color: rgba(0,0,0,0.5);
+}
+
+.detailSingleTitle{
+    font-size: larger;
+    padding: 10px 0 0 15px;
+    color: rgba(0,0,0,0.6);
+}
+
+.detailSingleContent{
+    font-size: large;
+    padding: 10px 0 0 15px;
+    color: black;
+}
+
+.detailFoot{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.f{
+    flex: 1;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin: 5px 10px 7px 10px;
+    background-color: #005caf;
+    color: white;
+    box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+#delRed{
+    background-color: white;
+    color: #ff7875;
+}
+
+#ModelContainer{
+    display: none;
+}
+
+.Model{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.modelMain{
+    background-color: white;
+    margin: 40vh 17vw 40vh 17vw;
+    width: 66vw;
+    height: 20vh;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    padding: 10px 15px 7px 15px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.delTitle{
+    font-size: large;
+}
+
+.ButtonContainerDel{
+    position: relative;
+    bottom: 0;
+}
+
+.singleButton{
+    padding: 5px 0 5px 0;
+    border: 1px solid rgba(0,0,0,0.2);
+    margin: 10px 20px 10px 20px;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.2);
+    border-radius: 7px;
+}
+
+.ret{
+    background-color: #005caf;
+    color: white;
+}
+
+.conf{
+    color: #ff7875;
+}

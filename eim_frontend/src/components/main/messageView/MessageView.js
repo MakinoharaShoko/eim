@@ -1,6 +1,6 @@
 import './messageView.css'
 import {runtime} from "../../../controller/core";
-import {Return} from "@icon-park/react";
+import {Avatar, Return} from "@icon-park/react";
 
 const MessageView = (props)=>{
     console.log("MV showing" + props.uid)
@@ -20,13 +20,19 @@ const MessageView = (props)=>{
             messageViewShow.push(temp2)
         }
     }
-
+    let name = runtime.EidToMark[dialogObject];
+    if(name === ''){
+        name = runtime.eidToName[dialogObject];
+    }
     return <div id={"MV"}>
         <div className={"dialogTop"}>
             <div className={"closeMV"} onClick={closeMV}>
-                <Return theme="outline" size="24" fill="#333"/>
+                <Return theme="outline" size="4.5vh" fill="#333"/>
             </div>
-            <div className={"MessageObjectName"}>{runtime.EidToMark[props.uid]}</div>
+            <div className={"detailNow"} onClick={()=>{openDetailView(dialogObject)}}>
+                <Avatar theme="outline" size="4.5vh" fill="#333"/>
+            </div>
+            <div className={"MessageObjectName"}>{name}</div>
         </div>
         <div className={"messageContainer"}>
             <div className={"sendMessageMain"}>
@@ -54,6 +60,11 @@ function messageSend(){
     msReq.send(sendLoginData);
     msReq.onreadystatechange = ()=>{
     }
+}
+
+function openDetailView(eid){
+    runtime.currentDetailShowEid = eid;
+    document.getElementById("showDetail").style.display = 'block'
 }
 
 export default MessageView

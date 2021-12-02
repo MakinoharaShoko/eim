@@ -36,13 +36,15 @@ function Dialog(){
         let showNameString = p;
         if(runtime.EidToMark[p]){
             showNameString = runtime.EidToMark[p];
+        }if(showNameString === p){
+            showNameString = runtime.eidToName[p];
         }
         let temp = <div className={"singleDialog"} onClick={()=>{openMessageView(p)}}>
             <div className={"dialogObject"}>
                 {showNameString}
             </div>
             <div className={"dialogContent"}>
-                {runtime.messageList[p][runtime.messageList[p].length-1].message}
+                {runtime.messageList[p][0].message}
             </div>
         </div>
         toDialogView.push(temp)

@@ -6,6 +6,7 @@ import {Nav} from "../main/nav/Nav";
 import ReactDOM from "react-dom";
 import {refContent, runtime} from "../../controller/core";
 import MessageView from "../main/messageView/MessageView";
+import Detail from "../main/detail/Detail";
 
 function Login(props){
     return <div id={"eim_login"}>
@@ -53,6 +54,7 @@ function hideLoginPage(){
     function ref(){
         refContent();
         let page = [
+            <Detail/>,
             <MessageView uid={runtime.currentMessageObject}/>,
             <Dialog/>,
             <Contacts/>,

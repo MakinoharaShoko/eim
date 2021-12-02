@@ -1,22 +1,36 @@
 import "./Contact.css";
-import {runtime} from "../../../../controller/core";
+import {getUserInfo, runtime} from "../../../../controller/core";
 import AddNew from "./addNew/AddNew";
 import FriendReq from "./FriendReq/FriendReq";
+import {AddOne, Remind} from "@icon-park/react";
 
 function Contacts() {
     let ContactList=[];
-
     for (let eidToMarkKey in runtime.EidToMark) {
-        let temp = <div className={"singleContact"} onClick={()=>{openMessageView(eidToMarkKey)}}>
-            {runtime.EidToMark[eidToMarkKey]}
+        getUserInfo(eidToMarkKey);
+        let showName = '';
+        if(runtime.EidToMark[eidToMarkKey] !=='')
+        {
+            showName = runtime.EidToMark[eidToMarkKey];
+        }else {
+            showName = runtime.eidToName[eidToMarkKey]
+        }
+        let temp = <div className={"singleContact"} onClick={()=>{openDetailView(eidToMarkKey)}}>
+            <div className={"singleName"}>{showName}</div>
+            <div className={"singleDetail"}>{runtime.eidToDetail[eidToMarkKey]}</div>
         </div>
         ContactList.push(temp)
     }
     return <div id={"contacts"}>
         <FriendReq uid={runtime.currentMessageObject}/>
         <AddNew/>
-        <div className={"addFriendButton"} onClick={openAdd}>添加新好友</div>
-        <div className={"addFriendButton"} onClick={openReq}>查看好友请求</div>
+        <div className={"contactsTopBar"} >
+            <div className={"buttonContainer"}>
+                <div className={"addFriendButton"} onClick={openAdd}><AddOne theme="outline" size="4.5vh" fill="#333" /></div>
+                <div className={"friendReqButton"} onClick={openReq}><Remind theme="outline" size="4.5vh" fill="#333" /></div>
+            </div>
+            <div className={"contactsTitle"}>好友</div>
+        </div>
         {ContactList}
     </div>
 }
@@ -29,10 +43,11 @@ function openReq(){
     document.getElementById("friendReq").style.display = 'block';
 }
 
-function openMessageView(eid){
-    runtime.currentMessageObject = eid;
-    console.log("now showing message from"+eid)
-    document.getElementById("MV").style.display = 'block'
+
+
+function openDetailView(eid){
+    runtime.currentDetailShowEid = eid;
+    document.getElementById("showDetail").style.display = 'block'
 }
 
 export {Contacts};

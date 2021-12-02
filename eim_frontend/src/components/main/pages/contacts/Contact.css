@@ -2,19 +2,49 @@
     display: none;
 }
 .addFriendButton{
-    color: #005CAF;
-    background-color: rgba(125,185,222,0.3);
-    text-align: center;
-    padding: 10px 0 10px 0;
-    margin: 5px 10px 5px 10px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 7px rgba(0,0,0,0.2);
-    font-size: larger;
+    float: left;
+    padding: 1vh 0 2vw 1vh;
 }
 
 .singleContact{
-    text-align: center;
+    text-align: left;
     margin:5px 10px 5px 10px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     padding: 10px 0 10px 0;
+}
+
+.friendReqButton{
+    float: right;
+    padding: 1vh 2vw 0 1vh;
+}
+
+.contactsTopBar{
+    background-color: aliceblue;
+    width: 100%;
+    height: 7vh;
+}
+
+.contactsTitle{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #005CAF;
+    font-size: x-large;
+    line-height: 7vh;
+    z-index: 1;
+}
+
+.buttonContainer{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+
+.singleName{
+    color: #005CAF;
+    font-size: large;
+}
+
+.singleDetail{
+    color: rgba(0,0,0,0.7);
 }

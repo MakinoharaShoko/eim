@@ -15,6 +15,8 @@ let runtime = {
     EidToMark:{},
     currentMessageObject:'-1',
     eidToName:{},
+    eidToDetail:{},
+    currentDetailShowEid:''
 }
 
 class Control{
@@ -50,4 +52,22 @@ function refContent(){
 
 }
 
-export {refContent,runtime,Control}
+function getUserInfo(eid){
+    let req1 = new XMLHttpRequest()
+    req1.open('GET',runtime.host+`/getAllInfo/${eid}`);
+    req1.send();
+    req1.onreadystatechange = ()=>{
+        if(req1.readyState === 4 && req1.status === 200){
+            let s = req1.responseText;
+            let data = JSON.parse(s);
+            if(data[0].hasOwnProperty('name')){
+                runtime.eidToName[eid] = data[0].name;
+            }
+            if(data[0].hasOwnProperty('detail')){
+                runtime.eidToDetail[eid] = data[0].detail;
+            }
+        }
+    }
+}
+
+export {refContent,runtime,Control,getUserInfo}
