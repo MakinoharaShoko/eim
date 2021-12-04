@@ -128,10 +128,17 @@ app.post(
             let obj = req.body;
             obj['sender'] = parseInt(obj['sender']);
             obj['receiver'] = parseInt(obj['receiver']);
-            dbo.collection("friendRel").insertOne(obj,function (err,result){
+            dbo.collection("friendRel").updateOne({sender:obj.sender,receiver:obj.receiver},
+                {$set:obj},
+                {upsert:true},
+                function (err,result){
                 if (err) throw err;
-                db.close();
                 res.send('OK:\n'+obj.sender+'备注: '+obj.message+'\n to '+obj.receiver);
+                dbo.collection('addReq').deleteMany(
+                    {sender:obj.receiver,receiver:obj.sender},(err,result)=>{
+                        if (err) throw err;
+                        db.close();
+                    });
             });
         });
     }
@@ -171,5 +178,37 @@ app.get(
         })
     }
 )
+
+app.post('/delFriendRel',(req,res)=>{
+    let delInfo = req.body;
+    let sender = parseInt(req.body.sender);
+    let receiver = parseInt(req.body.receiver);
+    MongoClient.connect(MongoUrl,(err,db)=>{
+        if(err) throw err;
+        let dbo = db.db('EIM');
+        dbo.collection('friendRel').deleteMany(
+            {$or:[
+                {sender:sender,receiver:receiver},
+                    {sender:receiver,receiver:sender}
+                ]},(err,result)=>{
+                if (err) throw err;
+                res.send(`OK,deleted ${sender}<---->${receiver}`)
+                delDialogs();
+            }
+        )
+
+        function delDialogs(){
+            dbo.collection('messages').deleteMany(
+                {$or:[
+                        {sender:sender,receiver:receiver},
+                        {sender:receiver,receiver:sender}
+                    ]},(err,result)=>{
+                    if (err) throw err;
+                    res.send(`OK,deleted ${sender}<---->${receiver}`)
+                }
+            )
+        }
+    })
+})
 
 app.listen(Port, () => console.log('服务器已就绪，运行在端口'+Port))//输出服务器启动信息

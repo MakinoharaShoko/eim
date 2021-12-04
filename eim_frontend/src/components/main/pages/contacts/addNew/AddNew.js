@@ -11,7 +11,7 @@ const AddNew = () => {
         </div>
         <Input placeholder="对方EID" id={"oUID"}/>
         <Input placeholder="验证消息" id={"oMessage"}/>
-        <Button type="primary" onClick={sendAddReq}>发送请求</Button>
+        <Button type="primary" onClick={sendAddReq} className={"senderButton"}>发送请求</Button>
     </div>
 }
 

@@ -7,3 +7,19 @@
     z-index: 3;
     overflow: scroll;
 }
+
+.senderButton{
+    width: 60%;
+    margin: 10px 20% 10px 20%;
+    padding: 5px 0 5px 0;
+}
+
+#oUID{
+    margin: 10px 20% 10px 20%;
+    width: 60%;
+}
+
+#oMessage{
+    margin: 10px 20% 10px 20%;
+    width: 60%;
+}

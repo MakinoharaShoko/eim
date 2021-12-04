@@ -68,7 +68,7 @@ function deleteFriend(eid){
                 } className={"singleButton ret"}>
                     返回
                 </div>
-                <div className={"singleButton conf"}>
+                <div className={"singleButton conf"} onClick={()=>{delFriendRel(runtime.userEID,eid)}}>
                     确认
                 </div>
             </div>
@@ -76,6 +76,22 @@ function deleteFriend(eid){
     </div>
     document.getElementById("ModelContainer").style.display = 'block';
     ReactDOM.render(temp,document.getElementById("ModelContainer"))
+}
+
+function delFriendRel(user1,user2){
+    let delFriendReq = new XMLHttpRequest();
+    delFriendReq.open('POST',runtime.host+'/delFriendRel');
+    delFriendReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let delString = `sender=${user1}&receiver=${user2}`;
+    delFriendReq.send(delString);
+    delFriendReq.onreadystatechange = ()=>{
+        if(delFriendReq.readyState === 4 && delFriendReq.status === 200){
+            alert('删除成功')
+            document.getElementById("ModelContainer").style.display = 'none';
+            runtime.EidToMark = {};
+        }
+
+    }
 }
 
 export default Detail;
