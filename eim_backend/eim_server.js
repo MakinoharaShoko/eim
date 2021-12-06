@@ -154,27 +154,39 @@ app.get(
             let returnMessage ={};
             let dbo = db.db('EIM');
             //获取个人信息
-            dbo.collection('users').find({eid:userEID}).toArray(function (err,result){
+            dbo.collection('users').find({eid:userEID}).toArray((err,result)=>{
                 if(err)throw err;
                 returnMessage['userInfo'] = result;
+                getMessage();
+            })
+
+            function getMessage(){
                 //获取消息列表
-                dbo.collection('messages').find({$or:[{sender:userEID},{receiver:userEID}]}).toArray(function (err,result){
+                dbo.collection('messages').find({$or:[{sender:userEID},{receiver:userEID}]}).toArray((err,result)=>{
                     if(err) throw err;
                     returnMessage['messages'] = result;
-                    //获取好友申请列表
-                    dbo.collection('addReq').find({receiver:userEID}).toArray((error, result)=>{
-                        if(error) throw error;
-                        returnMessage['AddFriendReq']=result;
-                        //获取好友列表
-                        dbo.collection('friendRel').find({sender:userEID}).toArray((err,result)=>{
-                            if(err) throw err;
-                            returnMessage['friends'] = result;
-                            db.close();
-                            res.send(returnMessage);
-                        })
-                    })
+                    getFriendReq();
                 })
-            })
+            }
+
+            function getFriendReq(){
+                //获取好友申请列表
+                dbo.collection('addReq').find({receiver:userEID}).toArray((error, result)=>{
+                    if(error) throw error;
+                    returnMessage['AddFriendReq']=result;
+                })
+                getFriendList();
+            }
+            function getFriendList(){
+                //获取好友列表
+                dbo.collection('friendRel').find({sender:userEID}).toArray((err,result)=>{
+                    if(err) throw err;
+                    returnMessage['friends'] = result;
+                    db.close();
+                    res.send(returnMessage);
+                })
+            }
+
         })
     }
 )
