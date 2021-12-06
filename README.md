@@ -12,6 +12,11 @@
 运行：
 
 ```
+(ubuntu)
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo apt-get install mongodb
+(进入eim目录)
 yarn install
 node eim_server.js
 ```
