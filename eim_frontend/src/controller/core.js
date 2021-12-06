@@ -1,5 +1,5 @@
 let runtime = {
-    host:'http://localhost:3001',
+    host:'',
     currentPage:'dialog',
     RuntimeData:{
         userInfo:[
@@ -18,6 +18,8 @@ let runtime = {
     eidToDetail:{},
     currentDetailShowEid:''
 }
+
+runtime.host=`http://${document.domain}:80`
 
 class Control{
     description='unset';
