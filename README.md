@@ -9,15 +9,47 @@
 
 数据库：MongoDB
 
-运行：
+要求：安装mongoDB和node.js
+
+## 安装：
 
 ```
 (ubuntu)
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install mongodb
-(进入eim目录)
+```
+
+#### Windows 需要手动安装最新版本的 Node.js 和 MongoDB（无需配置）
+
+如果 `npm install`速度较慢，可尝试换源（国内淘宝源）
+
+```
+npm config set registry https://registry.npmmirror.com/
+```
+
+
+
+## 运行：
+
+```
+(任何系统)
+sh start.sh
+```
+
+#### Windows系统可以尝试
+
+（依次运行）
+
+```
+npm install yarn -g
+cd eim_frontend
 yarn install
-node eim_server.js
+yarn run build
+cp ./build/* ../eim_backend/public
+cd ../
+cd eim_backend
+yarn install
+yarn run server
 ```
 
