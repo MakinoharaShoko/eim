@@ -28,6 +28,10 @@ sudo apt-get install mongodb
 npm config set registry https://registry.npmmirror.com/
 ```
 
+```
+yarn config set registry https://registry.npmmirror.com/
+```
+
 
 
 ## 运行：
