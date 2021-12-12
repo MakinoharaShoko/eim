@@ -19,7 +19,7 @@ let runtime = {
     currentDetailShowEid:''
 }
 
-runtime.host=`http://${document.domain}:80`
+runtime.host=``
 
 class Control{
     description='unset';
