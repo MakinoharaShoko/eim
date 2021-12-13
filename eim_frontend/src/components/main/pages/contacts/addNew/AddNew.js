@@ -6,8 +6,13 @@ import {Return} from "@icon-park/react";
 
 const AddNew = () => {
     return <div id={"addNew"}>
-        <div onClick={()=>{document.getElementById('addNew').style.display = 'none'}}>
-            <Return theme="outline" size="24" fill="#333"/>
+        <div className={"topBar"}>
+            <div className={"detailBackButton"} onClick={()=>{
+                document.getElementById('addNew').style.display = 'none'
+            }
+            }><Return theme="outline" size="4.5vh" fill="#333"/>
+            </div>
+            <div className={"detailTitle"}>添加好友</div>
         </div>
         <Input placeholder="对方EID" id={"oUID"}/>
         <Input placeholder="验证消息" id={"oMessage"}/>

@@ -27,10 +27,14 @@ const FriendReq = () =>{
         }
     }
     return <div id={"friendReq"}>
-        <div onClick={()=>{
-            document.getElementById("friendReq").style.display = 'none'
-        }
-        }><Return theme="outline" size="24" fill="#333"/></div>
+        <div className={"topBar"}>
+            <div className={"detailBackButton"} onClick={()=>{
+                document.getElementById("friendReq").style.display = 'none'
+            }
+            }><Return theme="outline" size="4.5vh" fill="#333"/>
+            </div>
+            <div className={"detailTitle"}>好友请求</div>
+        </div>
         {friendReqList}
     </div>
 }

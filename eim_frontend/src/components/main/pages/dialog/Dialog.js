@@ -1,5 +1,6 @@
 import "./Dialog.css"
 import {runtime} from "../../../../controller/core";
+import {Return} from "@icon-park/react";
 
 function Dialog(){
     //归类来自各个人的会话
@@ -50,6 +51,9 @@ function Dialog(){
         toDialogView.push(temp)
     }
     return <div id={"dialog"}>
+        <div className={"topBar"}>
+            <div className={"detailTitle"}>消息</div>
+        </div>
         {toDialogView}
     </div>
 }

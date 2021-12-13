@@ -21,7 +21,7 @@ let runtime = {
     eidToBirth:{}
 }
 
-runtime.host=``
+runtime.host=`http://${document.domain}:80`
 
 class Control{
     description='unset';

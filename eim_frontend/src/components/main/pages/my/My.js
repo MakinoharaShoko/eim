@@ -3,6 +3,9 @@ import {runtime} from "../../../../controller/core";
 
 function My() {
     return <div id={"my"}>
+        <div className={"topBar"}>
+            <div className={"detailTitle"}>我的</div>
+        </div>
         <div className={"My_name"}>
             {runtime.RuntimeData.userInfo[0].name}
             <span className={"My_Eid"}>

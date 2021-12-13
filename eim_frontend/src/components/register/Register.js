@@ -1,6 +1,7 @@
 import './register.css'
 import {runtime} from "../../controller/core";
 import {DatePicker} from "antd";
+import {Return} from "@icon-park/react";
 
 let birthDate ='未设置';
 
@@ -12,8 +13,13 @@ const Register = () => {
 
 
     return <div id={"register"}>
-        <div className={"registerTitle"}>
-            用户注册
+        <div className={"topBar"}>
+            <div className={"detailBackButton"} onClick={()=>{
+                document.getElementById('register').style.display = 'none'
+            }
+            }><Return theme="outline" size="4.5vh" fill="#333"/>
+            </div>
+            <div className={"detailTitle"}>用户注册</div>
         </div>
         <div>
             <div className={"infoTitle"}>设置昵称</div>

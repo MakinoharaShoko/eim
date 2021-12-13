@@ -1,17 +1,18 @@
 import "./Nav.css"
 import {runtime} from "../../../controller/core";
+import {AddressBook, Me, MessageOne} from "@icon-park/react";
 
 function Nav(){
     return <div id={"nav"}>
         <div className={"singleNavElement"} onClick={()=>{
             switchTab('dialog')
-        }}>会话</div>
+        }}><MessageOne theme="outline" size="24" fill="white"/></div>
         <div className={"singleNavElement"} onClick={()=>{
             switchTab('contacts')
-        }}>好友</div>
+        }}><AddressBook theme="outline" size="24" fill="white"/></div>
         <div className={"singleNavElement"} onClick={()=>{
             switchTab('my')
-        }}>我的</div>
+        }}><Me theme="outline" size="24" fill="white"/></div>
     </div>
 }
 
