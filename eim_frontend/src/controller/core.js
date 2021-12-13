@@ -6,7 +6,8 @@ let runtime = {
             {
                 name:'eim-影',
                 eid:9999,
-                detail:'一个简单的网页即时通讯（很不安全）'
+                detail:'一个简单的网页即时通讯（很不安全）',
+                birthDate:'未设置'
             }
         ]
     },
@@ -16,7 +17,8 @@ let runtime = {
     currentMessageObject:'-1',
     eidToName:{},
     eidToDetail:{},
-    currentDetailShowEid:''
+    currentDetailShowEid:'',
+    eidToBirth:{}
 }
 
 runtime.host=``
@@ -67,6 +69,9 @@ function getUserInfo(eid){
             }
             if(data[0].hasOwnProperty('detail')){
                 runtime.eidToDetail[eid] = data[0].detail;
+            }
+            if(data[0].hasOwnProperty('birthDate')){
+                runtime.eidToBirth[eid] = data[0].birthDate;
             }
         }
     }

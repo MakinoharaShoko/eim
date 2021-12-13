@@ -15,6 +15,12 @@ function My() {
         <div className={"My_detail"}>
             {runtime.RuntimeData.userInfo[0].detail}
         </div>
+        <div className={"My_detail_title"}>
+            生日
+        </div>
+        <div className={"My_detail"}>
+            {runtime.RuntimeData.userInfo[0].birthDate}
+        </div>
     </div>
 }
 

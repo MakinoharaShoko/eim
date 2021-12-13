@@ -11,6 +11,7 @@ const Detail = ()=>{
         mark = oriName;
     }
     let showDetail = runtime.eidToDetail[showEid];
+    let showBirth = runtime.eidToBirth[showEid];
     let toView = <div id={"showDetail"}>
         <div id={"ModelContainer"}/>
         <div className={"topBar"}>
@@ -34,6 +35,10 @@ const Detail = ()=>{
                 签名
             </div>
             <div className={"detailSingleContent"}>{showDetail}</div>
+            <div className={"detailSingleTitle"}>
+                生日
+            </div>
+            <div className={"detailSingleContent"}>{showBirth}</div>
         </div>
         <div className={"detailFoot"}>
             <div className={"f"} onClick={()=>{openMessageView(showEid)}}>

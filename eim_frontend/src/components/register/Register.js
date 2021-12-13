@@ -1,7 +1,16 @@
 import './register.css'
 import {runtime} from "../../controller/core";
+import {DatePicker} from "antd";
+
+let birthDate ='未设置';
 
 const Register = () => {
+    const onChange=(value,string)=>{
+        birthDate = string;
+        console.log(string)
+    }
+
+
     return <div id={"register"}>
         <div className={"registerTitle"}>
             用户注册
@@ -13,6 +22,8 @@ const Register = () => {
             <input id={"setPwd"} className={"infoInput"}/>
             <div className={"infoTitle"}>设置签名</div>
             <input id={"setDetail"} className={"infoInput"}/>
+            <div className={"infoTitle"}>设置生日</div>
+            <DatePicker onChange={onChange} style={{width:'60%'}}/>
         </div>
         <div className={"registerButton"} onClick={sendRegister}>
             注册
@@ -27,7 +38,7 @@ function sendRegister(){
     let name = document.getElementById('setName').value
     let pwd = document.getElementById("setPwd").value
     let detail=document.getElementById("setDetail").value
-    let sendLoginData=`name=${name}&pwd=${pwd}&detail=${detail}`
+    let sendLoginData=`name=${name}&pwd=${pwd}&detail=${detail}&birthDate=${birthDate}`
     registerReq.send(sendLoginData);
     registerReq.onreadystatechange = ()=>{
         if(registerReq.readyState === 4 &&registerReq.status === 200){
