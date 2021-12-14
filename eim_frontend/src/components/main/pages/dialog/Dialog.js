@@ -51,9 +51,9 @@ function Dialog(){
         toDialogView.push(temp)
     }
     return <div id={"dialog"}>
-        <div className={"topBar"}>
+        {/* <div className={"topBar"}>
             <div className={"detailTitle"}>消息</div>
-        </div>
+        </div> */}
         {toDialogView}
     </div>
 }
